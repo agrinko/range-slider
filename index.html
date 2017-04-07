@@ -1,0 +1,563 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>Demo - Range-slider. Customizable JavaScript component</title>
+        <meta name="description" content="Customizable slider (range) component for JavaScript">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/range-slider.css">
+        <script src="src/range-slider.js"></script>
+        <style>
+            header {
+                padding: 6px 10px;
+                font: 24px Times, serif;
+                background: seagreen;
+                color: white;
+            }
+            section {
+                padding: 10px;
+            }
+            section > h2 {
+                font: italic bold 22px Times, serif;
+                color: seagreen;
+            }
+            table {
+                width: 100%;
+            }
+            table thead th {
+                padding: 20px;
+            }
+            table tbody th {
+                width: 10%;
+                font-style: italic;
+            }
+            table td {
+                padding: 10px;
+            }
+            .demo {
+                padding: 10px;
+            }
+
+            .notice {
+                font-size: large;
+                color: orange;
+            }
+            .notice em {
+                font-weight: bold;
+            }
+
+            .constructor-section {
+                padding-bottom: 40px;
+                border-radius: 10px;
+                background: #222233;
+                color: #eeeeff;
+            }
+            .constructor-section button {
+                display: block;
+                margin: auto;
+                padding: 7px 24px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .form-block {
+                padding: 5px 10px;
+            }
+            .form-block > label:first-child {
+                display: inline-block;
+                min-width: 100px;
+            }
+            .value-block input {
+                width: 75px;
+            }
+            #constructor-result {
+                margin-top: 20px;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            Range-slider component by A.Grinko. Demo
+        </header>
+        <section>
+            <h2>Default configuration</h2>
+            <div class="demo">
+                <div id="slider-default"></div>
+                <script>
+                    new RangeSlider(document.getElementById("slider-default"));
+                </script>
+            </div>
+        </section>
+        <section>
+            <h2>Minimalistic configuration</h2>
+            <div class="demo">
+                <div id="slider-minimalistic"></div>
+                <script>
+                    new RangeSlider(document.getElementById("slider-minimalistic"), {
+                        step: 5,
+                        design: "2d",
+                        size: "small",
+                        width: 200,
+                        showMinMaxLabels: false,
+                        popup: null
+                    });
+                </script>
+            </div>
+            <p class="notice"><em>Touch support!</em> Try touch events with your device or emulator</p>
+        </section>
+        <section>
+            <h2>Features-MAX configuration</h2>
+            <div class="demo">
+                <div id="slider-max"></div>
+                <script>
+                    new RangeSlider(document.getElementById("slider-max"), {
+                        step: 10,
+                        min: 80,
+                        max: 1000,
+                        value: 200,
+                        unit: "km/h",
+                        design: "3d",
+                        showMinMaxLabels: true,
+                        showCurrentValueLabel: true,
+                        labelsPosition: "bottom",
+                        popup: "bottom",
+                        theme: "attention",
+                        handle: "round",
+                        size: "large"
+                    });
+                </script>
+            </div>
+            <p class="notice"><em>Totally responsive!</em> Try resizing your browser window</p>
+        </section>
+        <section>
+            <h2>Theme, Size, Shape & Design</h2>
+            <div class="demo">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Shape</th>
+                            <th>Design</th>
+                            <th>Small</th>
+                            <th>Medium</th>
+                            <th>Large</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="2">Square</th>
+                            <th>2D</th>
+                            <td>
+                                <div id="slider1"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider1"), {
+                                        design: "2d",
+                                        size: "small",
+                                        theme: "default",
+                                        value: 10
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider2"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider2"), {
+                                        design: "2d",
+                                        size: "medium",
+                                        theme: "positive",
+                                        value: 20
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider3"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider3"), {
+                                        design: "2d",
+                                        size: "large",
+                                        theme: "attention",
+                                        value: 30
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>3D</th>
+                            <td>
+                                <div id="slider4"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider4"), {
+                                        design: "3d",
+                                        size: "small",
+                                        theme: "default",
+                                        value: 40
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider5"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider5"), {
+                                        design: "3d",
+                                        size: "medium",
+                                        theme: "positive",
+                                        value: 50
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider6"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider6"), {
+                                        design: "3d",
+                                        size: "large",
+                                        theme: "attention",
+                                        value: 60
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">Round</th>
+                            <th>2D</th>
+                            <td>
+                                <div id="slider7"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider7"), {
+                                        design: "2d",
+                                        size: "small",
+                                        theme: "positive",
+                                        handle: "round",
+                                        value: 10
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider8"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider8"), {
+                                        design: "2d",
+                                        size: "medium",
+                                        theme: "attention",
+                                        handle: "round",
+                                        value: 80
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider9"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider9"), {
+                                        design: "2d",
+                                        size: "large",
+                                        theme: "default",
+                                        handle: "round",
+                                        value: 70
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>3D</th>
+                            <td>
+                                <div id="slider10"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider10"), {
+                                        design: "3d",
+                                        size: "small",
+                                        theme: "positive",
+                                        handle: "round",
+                                        value: 40
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider11"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider11"), {
+                                        design: "3d",
+                                        size: "medium",
+                                        theme: "attention",
+                                        handle: "round",
+                                        value: 55
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider12"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider12"), {
+                                        design: "3d",
+                                        size: "large",
+                                        theme: "default",
+                                        handle: "round",
+                                        value: 68
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">Rectangle</th>
+                            <th>2D</th>
+                            <td>
+                                <div id="slider13"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider13"), {
+                                        design: "2d",
+                                        size: "small",
+                                        theme: "attention",
+                                        handle: "rect",
+                                        value: 100
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider14"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider14"), {
+                                        design: "2d",
+                                        size: "medium",
+                                        theme: "default",
+                                        handle: "rect",
+                                        value: 80
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider15"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider15"), {
+                                        design: "2d",
+                                        size: "large",
+                                        theme: "positive",
+                                        handle: "rect",
+                                        value: 70
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>3D</th>
+                            <td>
+                                <div id="slider16"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider16"), {
+                                        design: "3d",
+                                        size: "small",
+                                        theme: "attention",
+                                        handle: "rect",
+                                        value: 40
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider17"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider17"), {
+                                        design: "3d",
+                                        size: "medium",
+                                        theme: "default",
+                                        handle: "rect",
+                                        value: 55
+                                    });
+                                </script>
+                            </td>
+                            <td>
+                                <div id="slider18"></div>
+                                <script>
+                                    new RangeSlider(document.getElementById("slider18"), {
+                                        design: "3d",
+                                        size: "large",
+                                        theme: "positive",
+                                        handle: "rect",
+                                        value: 33
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section>
+            <h2>Interaction</h2>
+            <div class="demo">
+                <div id="slider-interactive"></div>
+                <div class="form-block">
+                    <label>
+                        Type a number to exclude: <input type="number" id="exclude-number"> - it will be excluded by
+                        returning <em>false</em> in <em>onmove()</em> callback
+                    </label>
+                </div>
+                <div class="form-block">
+                    <label>"onmove" events: <output id="onmove-number">0</output></label>
+                </div>
+                <div class="form-block">
+                    <label>"onchange" events: <output id="onchange-number">0</output></label>
+                </div>
+                <script>
+                    (function() {
+                        var onmoveOut = document.getElementById("onmove-number");
+                        var onchangeOut = document.getElementById("onchange-number");
+                        var onmoveNum = 0;
+                        var onchangeNum = 0;
+
+                        new RangeSlider(document.getElementById("slider-interactive"), {
+                            theme: "positive",
+                            value: 0,
+                            min: -90,
+                            max: 90,
+                            step: 15,
+                            unit: "deg",
+                            showCurrentValueLabel: true,
+                            onmove: function(x) {
+                                var input = document.getElementById("exclude-number");
+                                var exclude = +input.value;
+
+                                onmoveOut.innerText = ++onmoveNum;
+
+                                if ((exclude || exclude === 0) && exclude === x) {
+                                    return false;
+                                }
+                            },
+                            onchange: function(x) {
+                                onchangeOut.innerText = ++onchangeNum;
+
+                                alert("Changed value: " + x + "\nYou can send it in ajax now or process it somehow");
+                            }
+                        });
+                    })();
+                </script>
+            </div>
+        </section>
+        <section>
+            <h2>Constructor</h2>
+            <div class="demo constructor-section">
+                <form action="">
+                    <div class="form-block">
+                        <label>Design:</label>
+                        <label><input type="radio" name="design" value="2d">2d</label>
+                        <label><input type="radio" name="design" value="3d" checked="checked">3d</label>
+                    </div>
+                    <div class="form-block">
+                        <label>Theme:</label>
+                        <select name="theme">
+                            <option value="default" selected="selected">default</option>
+                            <option value="positive">positive</option>
+                            <option value="attention">attention</option>
+                        </select>
+                    </div>
+                    <div class="form-block">
+                        <label>Size:</label>
+                        <select name="size">
+                            <option value="small">small</option>
+                            <option value="medium" selected="selected">medium</option>
+                            <option value="large">large</option>
+                        </select>
+                    </div>
+                    <div class="form-block">
+                        <label>Handle shape:</label>
+                        <select name="handle">
+                            <option value="square" selected="selected">square</option>
+                            <option value="round">round</option>
+                            <option value="rect">rect</option>
+                        </select>
+                    </div>
+                    <div class="form-block">
+                        <label>Popup:</label>
+                        <select name="popup">
+                            <option value="top" selected="selected">top</option>
+                            <option value="bottom">bottom</option>
+                            <option value="">none</option>
+                        </select>
+                    </div>
+                    <div class="form-block">
+                        <label>Width:</label>
+                        <input name="width" type="text" placeholder="in css format">
+                    </div>
+                    <div class="form-block value-block">
+                        <label>Value:</label>
+                        <input name="value" type="number" value="0" placeholder="value">
+                        <input name="unit" type="text" placeholder="unit">
+                        (min: <input name="min" type="number" value="0" placeholder="min">;
+                         max: <input name="max" type="number" value="100" placeholder="max">;
+                         step: <input name="step" type="number" value="1" placeholder="step">)
+                    </div>
+                    <div class="form-block">
+                        <label>Labels:</label>
+                        <ul>
+                            <li>
+                                <label>
+                                    show min-max labels
+                                    <input name="showMinMaxLabels" value="showMinMaxLabels" type="checkbox"
+                                           checked="checked">
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    show current value label
+                                    <input name="showCurrentValueLabel" type="checkbox" value="showCurrentValueLabel">
+                                </label>
+                            </li>
+                            <li>
+                                labels position
+                                <label>
+                                    <input name="labelsPosition" type="radio" value="top" checked="checked">
+                                    top
+                                </label>
+                                <label>
+                                    <input name="labelsPosition" type="radio" value="bottom">
+                                    bottom
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" id="construct">Build it!</button>
+                </form>
+
+                <div id="constructor-result">
+
+                </div>
+            </div>
+
+            <script>
+                (function() {
+                    var slider;
+
+                    document.getElementById("construct").addEventListener("click", function () {
+                        var f = document.forms[0];
+                        var output = document.getElementById("constructor-result");
+                        if (slider) {
+                            output.removeChild(slider);
+                        }
+
+                        slider = document.createElement("DIV");
+                        output.appendChild(slider);
+
+                        new RangeSlider(slider, {
+                            value: f.value.value,
+                            min: f.min.value,
+                            max: f.max.value,
+                            step: f.step.value,
+                            unit: f.unit.value,
+                            width: f.width.value,
+                            design: radioValue(f.design),
+                            theme: f.theme.value,
+                            size: f.size.value,
+                            handle: f.handle.value,
+                            popup: f.popup.value,
+                            showMinMaxLabels: f.showMinMaxLabels.checked,
+                            showCurrentValueLabel: f.showCurrentValueLabel.checked,
+                            labelsPosition: radioValue(f.labelsPosition)
+                        });
+
+                        function radioValue(radio) { // used for IE
+                            for (var i = 0; i < radio.length; i++) {
+                                if (radio[i].checked) return radio[i].value;
+                            }
+                        }
+                    });
+                })();
+            </script>
+        </section>
+    </body>
+</html>
