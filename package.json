@@ -5,12 +5,14 @@
   "main": "src/range-slider.min.js",
   "scripts": {
     "build": "gulp build",
+    "css": "gulp minify-css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "range",
     "slider",
     "numbers-slider",
+    "widget",
     "javascript",
     "js",
     "jquery",
@@ -34,6 +36,7 @@
     "babel-preset-es2015": "^6.24.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.1.2"
   }
