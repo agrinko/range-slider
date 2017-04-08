@@ -35,7 +35,14 @@
      */
     class RangeSlider {
         constructor(element, settings) {
-            this.el = element || RangeSlider._el();
+            if (!(element instanceof HTMLElement)) {
+                element = RangeSlider._el();
+                if (!settings) {
+                    settings = element;
+                }
+            }
+
+            this.el = element;
             this.s = assign({}, DEFAULTS, settings);
 
             this._validateSettings();

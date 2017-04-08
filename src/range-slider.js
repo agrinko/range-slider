@@ -44,7 +44,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         function RangeSlider(element, settings) {
             _classCallCheck(this, RangeSlider);
 
-            this.el = element || RangeSlider._el();
+            if (!(element instanceof HTMLElement)) {
+                element = RangeSlider._el();
+                if (!settings) {
+                    settings = element;
+                }
+            }
+
+            this.el = element;
             this.s = assign({}, DEFAULTS, settings);
 
             this._validateSettings();
