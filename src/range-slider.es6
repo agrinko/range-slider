@@ -64,7 +64,7 @@
             return this.el;
         }
 
-        labelValue(value) {
+        labelValue(value=this.value) {
             let unit = this.s.unit || '';
             return value + ' ' + unit;
         }

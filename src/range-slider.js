@@ -77,7 +77,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
         }, {
             key: "labelValue",
-            value: function labelValue(value) {
+            value: function labelValue() {
+                var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.value;
+
                 var unit = this.s.unit || '';
                 return value + ' ' + unit;
             }
