@@ -241,7 +241,7 @@ Default: `"top"`
 Defines position of the popup displayed when user is moving handler. You can change colors of the
 popup with your custom CSS (see [changing popup color](#changing-popup-color) section below).
 
-Use `null` to disable popup.
+Use `null` (or any falsy value) to disable popup.
 
 #### showMinMaxLabels
 
@@ -263,7 +263,7 @@ Whether to display current (actual) value label.
 
 It is displayed near the handler and moves together with it. If you want to hide it during movement
 and display only statically (i.e. only when user is not interacting with the slider), see
-[CSS customization](#css-customization) section below.
+[hiding current value label during interaction](#hiding-current-value-label-during-interaction) section below.
 
 When `popup` is enabled, current value label is hidden automatically during the movement.
 
@@ -360,11 +360,11 @@ new RangeSlider({
 In this case class name will be added to the slider element formed as `rs-theme-${theme}`
 ("rs-theme-custom" for the example specified above).
 
-You can customize your them then with the following CSS (assumed theme is set to "custom"):
+You can customize your theme then with the following CSS (assumed theme is set to "custom"):
 
 ```css
 .rs-theme-custom .rs-progress,
-.rs-theme-custom.rs-design-2d .rs-progress::before {
+.rs-theme-custom .rs-progress::before {
     background: pink;
 }
 .rs-theme-custom .rs-handle {
@@ -376,12 +376,12 @@ You can customize your them then with the following CSS (assumed theme is set to
 }
 ```
 
-The first rule is used to set progress-bar color in 2D mode.
+The first rule is used to set general progress-bar color.
 
 The second rule is used to set handler color in both 2D and 3D modes (you can differentiate
-between the modes by adding `.rs-desing-2d` or `.rs-design-3d` class to the selector).
+between the modes by adding `.rs-desing-2d` or `.rs-design-3d` class to the outer selector).
 
-The third rule is used to set progress-bar color in 3D mode.
+The third rule is used to adjust progress-bar color in 3D mode.
 
 ### Changing popup color
 
@@ -417,7 +417,7 @@ or they use your custom theme selector like `.range-slider.rs-theme-custom` befo
 
 ### Hiding current value label during interaction
 
-In general, to adjust slider styling during interaction, user `.range-slider.rs-active` outer selector.
+In general, to adjust slider styling during interaction, use `.range-slider.rs-active` outer selector.
 
 If you want to see current value label, but to hide it when user is moving the slider, and if
 you don't use popup, you can add the following CSS rule:
