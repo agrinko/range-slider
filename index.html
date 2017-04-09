@@ -390,17 +390,22 @@
                     </label>
                 </div>
                 <div class="form-block">
-                    <label>"onmove" events: <output id="onmove-number">0</output></label>
+                    <label>"onstart" callbacks: <output id="onstart-number">0</output></label>
                 </div>
                 <div class="form-block">
-                    <label>"onchange" events: <output id="onchange-number">0</output></label>
+                    <label>"onmove" callbacks: <output id="onmove-number">0</output></label>
+                </div>
+                <div class="form-block">
+                    <label>"onfinish" callbacks: <output id="onfinish-number">0</output></label>
                 </div>
                 <script>
                     (function() {
                         var onmoveOut = document.getElementById("onmove-number");
-                        var onchangeOut = document.getElementById("onchange-number");
+                        var onfinishOut = document.getElementById("onfinish-number");
+                        var onstartOut = document.getElementById("onstart-number");
                         var onmoveNum = 0;
-                        var onchangeNum = 0;
+                        var onfinishNum = 0;
+                        var onstartNum = 0;
 
                         new RangeSlider(document.getElementById("slider-interactive"), {
                             theme: "positive",
@@ -420,10 +425,13 @@
                                     return false;
                                 }
                             },
-                            onchange: function(x) {
-                                onchangeOut.innerText = ++onchangeNum;
+                            onfinish: function(x) {
+                                onfinishOut.innerText = ++onfinishNum;
 
                                 alert("Changed value: " + x + "\nYou can send it in ajax now or process it somehow");
+                            },
+                            onstart: function(x) {
+                                onstartOut.innerText = ++onstartNum;
                             }
                         });
                     })();

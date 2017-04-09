@@ -26,8 +26,9 @@
         showMinMaxLabels: true,         // <boolean>
         showCurrentValueLabel: false,   // <boolean>
         labelsPosition: "top",          // <"top", "bottom">
+        onstart: () => {},              // <(value: number) => boolean>
         onmove: () => {},               // <(value: number) => boolean>
-        onchange: () => {}              // <(value: number) => void>
+        onfinish: () => {}              // <(value: number) => void>
     };
     /**
      * Main class responsible for creating the component
@@ -243,6 +244,8 @@
         }
 
         _begin(clientX, target) {
+            if (this.s.onstart.call(this, this.value) === false) return;
+
             this.prevValue = this.value;
             this.el.className += " rs-active";
 
@@ -284,7 +287,7 @@
 
         _end() {
             if (this.value != this.prevValue) {
-                this.s.onchange.call(this, this.value);
+                this.s.onfinish.call(this, this.value);
             }
 
             this.el.className = this.el.className.replace("rs-active", "");

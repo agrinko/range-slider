@@ -32,8 +32,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         showMinMaxLabels: true, // <boolean>
         showCurrentValueLabel: false, // <boolean>
         labelsPosition: "top", // <"top", "bottom">
+        onstart: function onstart() {}, // <(value: number) => boolean>
         onmove: function onmove() {}, // <(value: number) => boolean>
-        onchange: function onchange() {} // <(value: number) => void>
+        onfinish: function onfinish() {} // <(value: number) => void>
     };
     /**
      * Main class responsible for creating the component
@@ -268,6 +269,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
             key: "_begin",
             value: function _begin(clientX, target) {
+                if (this.s.onstart.call(this, this.value) === false) return;
+
                 this.prevValue = this.value;
                 this.el.className += " rs-active";
 
@@ -313,7 +316,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             key: "_end",
             value: function _end() {
                 if (this.value != this.prevValue) {
-                    this.s.onchange.call(this, this.value);
+                    this.s.onfinish.call(this, this.value);
                 }
 
                 this.el.className = this.el.className.replace("rs-active", "");
