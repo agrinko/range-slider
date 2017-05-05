@@ -12,7 +12,8 @@ gulp.task("build", ["babel", "minify-css"], () => {
             "!src/*.min.js"
         ])
         .pipe(uglify({
-            preserveComments: "license"
+            preserveComments: "license",
+            wrap: true // to prevent Babel's helpers from being exported as globals
         }))
         .pipe(rename({
             suffix: ".min"
